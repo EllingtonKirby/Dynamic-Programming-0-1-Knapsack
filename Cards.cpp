@@ -257,7 +257,17 @@ pair<vector<string>, int> Cards::backtrackMethod(vector<pair<string, int>> price
 	
 	return pair<vector<string>, int>(cardSolutions, maxprofit);
 }
-
+/*
+ *
+ *
+ *
+ * DYNAMIC PROGRAMMING CODE BEGINS HERE
+ *
+ *
+ *
+ *
+ *
+ */
 int Cards::dynamicSolution(vector<pair<string, int>> priceList, int bank){
 	vector<int*> P;
 	for(int i = 0; i < 2 ; i++){
@@ -269,8 +279,8 @@ int Cards::dynamicSolution(vector<pair<string, int>> priceList, int bank){
 	for(int i = 0; i <= bank; i++){
 		P[0][i] = 0;
 	}
-	P[1][0] = 0;
-	for(int i = 0; i < priceList.size(); i++){
+	for(int i = 0; i <= priceList.size(); i++){
+		P[1][0] = 0;
 		for(int c = 1; c <= bank; c++){
 			if(Weights[i] <= c){
 				if((P[0][c - Weights[i]] + Profits[i]) > P[0][c]){

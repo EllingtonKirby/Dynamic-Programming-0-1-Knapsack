@@ -1,1 +1,1 @@
-Dynamic Programming: 4 90 0
+Dynamic Programming: 1000000 10930420 230.22

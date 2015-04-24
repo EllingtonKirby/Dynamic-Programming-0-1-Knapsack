@@ -48,11 +48,9 @@ int main(int argc, char* argv[]){
 		Cards card;
 		card.generateList(marketFile);
 		ofstream of(outFile);
-		cout << priceLists.size() << endl;
 		for(int i = 0; i < priceLists.size(); i++){
 			t1 = clock();
 			int solution = card.dynamicSolution(priceLists[i], banks[i]);
-			cout << solution << endl;
 			t2 = clock();
 			of << "Dynamic Programming: " << priceLists[i].size() << " " << solution << " " << double (t2-t1)/CLOCKS_PER_SEC << endl;
 		}
