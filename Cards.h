@@ -32,5 +32,6 @@ class Cards{
 		void knapsack(int i, int weight, int profit, int bank, int num_cards);
 		pair<vector<string>, int> backtrackMethod(vector<pair<string, int>> priceList, int bank);
 		pair<long int,long int> getSubsets();
+		int dynamicSolution(vector<pair<string, int>> priceList, int bank);
 
 };

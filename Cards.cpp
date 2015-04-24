@@ -258,6 +258,36 @@ pair<vector<string>, int> Cards::backtrackMethod(vector<pair<string, int>> price
 	return pair<vector<string>, int>(cardSolutions, maxprofit);
 }
 
-
-
-
+int Cards::dynamicSolution(vector<pair<string, int>> priceList, int bank){
+	vector<int*> P;
+	for(int i = 0; i < 2 ; i++){
+		int * arrayC = new int[bank+1];
+		arrayC[0] = 0;
+		P.push_back(arrayC);
+	}
+	profitSort(priceList);
+	for(int i = 0; i <= bank; i++){
+		P[0][i] = 0;
+	}
+	P[1][0] = 0;
+	for(int i = 0; i < priceList.size(); i++){
+		for(int c = 1; c <= bank; c++){
+			if(Weights[i] <= c){
+				if((P[0][c - Weights[i]] + Profits[i]) > P[0][c]){
+					P[1][c] = P[0][c - Weights[i]] + Profits[i];
+				}
+				else{
+					P[1][c] = P[0][c];
+				}
+			}
+			else{
+				P[1][c] = P[0][c];
+			}
+		}
+		for(int j = 0; j <= bank; j++){
+			P[0][j] = P[1][j];
+		}
+	}
+	int maxProfit = P[1][bank];
+	return maxProfit;
+}
